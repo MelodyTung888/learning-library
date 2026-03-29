@@ -11,6 +11,7 @@ const fields = [
   { key: "tags", label: "标签", type: "tags" as const, placeholder: "标签1, 标签2" },
   { key: "link", label: "GitHub链接", type: "text" as const, placeholder: "https://github.com/username/repo" },
   { key: "author", label: "GitHub作者", type: "text" as const, placeholder: "username" },
+  { key: "installPackage", label: "安装包链接", type: "text" as const, placeholder: "选填，点击可下载安装包" },
   { key: "color", label: "颜色", type: "color" as const },
 ];
 
@@ -26,11 +27,12 @@ export default function SkillsAdminPage() {
         rank: "",
         title: "",
         desc: "",
-        category: "前端",
+        category: "技巧",
         tags: [],
         color: "#B0623F",
         link: "https://github.com/",
-        author: ""
+        author: "",
+        installPackage: ""
       })}
     />
   );

@@ -799,6 +799,25 @@ body {
   object-fit: cover;
 }
 
+.dark-skill-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  background: rgba(196, 30, 58, 0.08);
+  border: 1px solid var(--color-accent);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.dark-skill-download:hover {
+  background: rgba(196, 30, 58, 0.15);
+}
+
 .dark-skill-item {
   display: flex;
   align-items: center;

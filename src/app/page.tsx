@@ -406,7 +406,7 @@ function Skills() {
               transition={{ delay: 0.1 }}
               style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginTop: '0.25rem' }}
             >
-              实用工具和最佳实践，复制即用
+              实用工具和最佳实践，复制即用。用好AI、而不是让AI来消耗你
             </motion.p>
           </div>
         </div>
@@ -464,11 +464,19 @@ function Skills() {
               <h4 className="dark-skill-title">{skill.title}</h4>
               <p className="dark-skill-desc">{skill.desc}</p>
             </div>
-            <div className="dark-skill-tags">
-              {skill.tags.map((tag: string, j: number) => (
-                <span key={j} className="dark-skill-tag">{tag}</span>
-              ))}
-            </div>
+            {skill.installPackage && (
+              <a
+                href={skill.installPackage}
+                download
+                onClick={(e) => e.stopPropagation()}
+                className="dark-skill-download"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                </svg>
+                安装包
+              </a>
+            )}
           </motion.a>
         ))}
       </div>
