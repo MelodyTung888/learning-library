@@ -6,7 +6,7 @@ import { videos, videoCategories, type Video } from "@/data/videos";
 import { podcasts, podcastCategories, type Podcast } from "@/data/podcasts";
 import { bloggers, bloggerCategories, type Blogger } from "@/data/bloggers";
 import { skills, skillCategories, type Skill } from "@/data/skills";
-import { prompts, promptCategories, type Prompt } from "@/data/prompts";
+import { prompts, promptsCategories, type Prompt } from "@/data/prompts";
 
 function Hero() {
   return (
@@ -504,7 +504,7 @@ function Prompts() {
           className="dark-categories"
           style={{ marginBottom: '1.5rem' }}
         >
-          {promptCategories.map((cat) => (
+          {promptsCategories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
@@ -528,11 +528,6 @@ function Prompts() {
           >
             <div className="dark-prompt-header">
               <h3 className="dark-prompt-title">{prompt.title}</h3>
-              <div className="dark-prompt-tags">
-                {prompt.tags.map((tag: string, j: number) => (
-                  <span key={j} className="dark-prompt-tag">{tag}</span>
-                ))}
-              </div>
             </div>
             <div className="dark-prompt-actions">
               <button
