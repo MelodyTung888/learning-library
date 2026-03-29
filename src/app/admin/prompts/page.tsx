@@ -1,11 +1,11 @@
 "use client";
 
 import DataEditor from "@/components/admin/DataEditor";
-import { prompts, promptCategories, type Prompt } from "@/data/prompts";
+import { prompts, promptsCategories, type Prompt } from "@/data/prompts";
 
 const fields = [
   { key: "title", label: "标题", type: "text" as const, placeholder: "输入标题" },
-  { key: "category", label: "分类", type: "select" as const, options: promptCategories.filter(c => c !== "All") },
+  { key: "category", label: "分类", type: "select" as const, options: promptsCategories.filter(c => c !== "All") },
   { key: "tags", label: "标签", type: "tags" as const, placeholder: "标签1, 标签2" },
   { key: "content", label: "内容", type: "textarea" as const, placeholder: "输入 Prompt 内容" },
 ];
