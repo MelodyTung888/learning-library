@@ -390,14 +390,25 @@ function Skills() {
           >
             02
           </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="dark-section-title"
-          >
-            个人 Top Skills
-          </motion.h2>
+          <div>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="dark-section-title"
+            >
+              个人 Top Skills
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginTop: '0.25rem' }}
+            >
+              实用工具和最佳实践，复制即用
+            </motion.p>
+          </div>
         </div>
         <button onClick={() => setShowAll(!showAll)} className="dark-view-all-btn">
           {showAll ? '收起' : '查看全部'}
@@ -426,17 +437,29 @@ function Skills() {
         </motion.div>
       )}
 
-      <div className="dark-skills-list">
+      <div className="dark-skills-grid">
         {displaySkills.map((skill: Skill, i: number) => (
-          <motion.div
+          <motion.a
             key={i}
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            href={skill.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.04, duration: 0.5 }}
-            className="dark-skill-item"
+            transition={{ delay: i * 0.08, duration: 0.5 }}
+            className="dark-skill-card"
+            style={{ textDecoration: 'none', color: 'inherit' }}
           >
-            <span className="dark-skill-rank gradient-text-violet" style={{ color: skill.color }}>{skill.rank}</span>
+            <div className="dark-skill-icon">
+              <img
+                src={`https://github.com/${skill.author}.png`}
+                alt={skill.author}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = `https://avatars.githubusercontent.com/u/0?s=60&v=4`;
+                }}
+              />
+            </div>
             <div className="dark-skill-content">
               <h4 className="dark-skill-title">{skill.title}</h4>
               <p className="dark-skill-desc">{skill.desc}</p>
@@ -446,7 +469,7 @@ function Skills() {
                 <span key={j} className="dark-skill-tag">{tag}</span>
               ))}
             </div>
-          </motion.div>
+          </motion.a>
         ))}
       </div>
     </section>
@@ -539,6 +562,7 @@ function Prompts() {
           >
             <div className="dark-prompt-header">
               <h3 className="dark-prompt-title">{prompt.title}</h3>
+              {prompt.desc && <p className="dark-prompt-desc">{prompt.desc}</p>}
             </div>
             <div className="dark-prompt-actions">
               <button
