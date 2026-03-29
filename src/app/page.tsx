@@ -480,14 +480,25 @@ function Prompts() {
           >
             01
           </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="dark-section-title"
-          >
-            有意思的 Prompts
-          </motion.h2>
+          <div>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="dark-section-title"
+            >
+              有意思的 Prompts
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginTop: '0.25rem' }}
+            >
+              值得收藏的AI提示词，复制即可使用
+            </motion.p>
+          </div>
         </div>
         <button onClick={() => setShowAll(!showAll)} className="dark-view-all-btn">
           {showAll ? '收起' : '查看全部'}
