@@ -5,6 +5,7 @@ export interface Skill {
   category: string;
   link: string;
   author: string;
+  installPackage?: string;
 }
 
 export const skills: Skill[] = [

@@ -439,32 +439,55 @@ function Skills() {
 
       <div className="dark-skills-grid">
         {displaySkills.map((skill: Skill, i: number) => (
-          <motion.a
+          <div
             key={i}
-            href={skill.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.08, duration: 0.5 }}
             className="dark-skill-card"
-            style={{ textDecoration: 'none', color: 'inherit' }}
           >
-            <div className="dark-skill-icon">
-              <img
-                src={`https://github.com/${skill.author}.png`}
-                alt={skill.author}
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = `https://avatars.githubusercontent.com/u/0?s=60&v=4`;
-                }}
-              />
+            <a
+              href={skill.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none', color: 'inherit' }}
+              className="dark-skill-card-link"
+            >
+              <div className="dark-skill-icon">
+                <img
+                  src={`https://github.com/${skill.author}.png`}
+                  alt={skill.author}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = `https://avatars.githubusercontent.com/u/0?s=60&v=4`;
+                  }}
+                />
+              </div>
+              <div className="dark-skill-content">
+                <h4 className="dark-skill-title">{skill.title}</h4>
+                <p className="dark-skill-desc">{skill.desc}</p>
+              </div>
+            </a>
+            <div className="dark-skill-actions">
+              <a
+                href={skill.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="dark-skill-btn dark-skill-btn-primary"
+              >
+                点击查看
+              </a>
+              {skill.installPackage ? (
+                <a
+                  href={skill.installPackage}
+                  download
+                  className="dark-skill-btn dark-skill-btn-download"
+                >
+                  直接下载
+                </a>
+              ) : (
+                <span className="dark-skill-btn dark-skill-btn-disabled">
+                  直接下载
+                </span>
+              )}
             </div>
-            <div className="dark-skill-content">
-              <h4 className="dark-skill-title">{skill.title}</h4>
-              <p className="dark-skill-desc">{skill.desc}</p>
-            </div>
-          </motion.a>
+          </div>
         ))}
       </div>
     </section>
