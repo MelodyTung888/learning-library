@@ -5,6 +5,7 @@ export interface Skill {
   category: string;
   link: string;
   author: string;
+  installPackage?: string;
 }
 
 export const skills: Skill[] = [
@@ -22,7 +23,8 @@ export const skills: Skill[] = [
     "desc": "所有技能之母、直接口喷帮你生成新技能。3月刚迎来史诗级更新，必装技能",
     "category": "养虾必备",
     "link": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
-    "author": "anthropics"
+    "author": "anthropics",
+    "installPackage": "/installs/skill-creator.zip"
   },
   {
     "rank": "03",
@@ -30,7 +32,8 @@ export const skills: Skill[] = [
     "desc": "保命skill，你的安全门卫&杀毒软件",
     "category": "养虾必备",
     "link": "https://clawhub.ai/spclaudehome/skill-vetter",
-    "author": "clawhub"
+    "author": "clawhub",
+    "installPackage": "/installs/skill-vetter.zip"
   },
   {
     "rank": "04",
@@ -38,7 +41,8 @@ export const skills: Skill[] = [
     "desc": "让AI可以自己操作网页，自动导航、点击、输入、截图，完成网页操作",
     "category": "高星推荐",
     "link": "https://github.com/vercel-labs/agent-browser",
-    "author": "vercel-labs"
+    "author": "vercel-labs",
+    "installPackage": "/installs/agent-browser.zip"
   },
   {
     "rank": "05",
