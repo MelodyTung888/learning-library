@@ -1127,6 +1127,8 @@ body {
 
 .dark-footer-socials {
   text-align: right;
+  max-width: 120px;
+  flex-shrink: 0;
 }
 
 @media (max-width: 768px) {

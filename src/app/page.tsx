@@ -815,7 +815,10 @@ function Footer() {
             <h3 className="dark-footer-name">Melody</h3>
             <p className="dark-footer-tagline">持续学习，持续分享</p>
             <p className="dark-footer-desc">
-              热爱探索与分享。相信好的信息值得被整理和传播。这个站点用于记录我发现的优秀资源，希望对你也有帮助。<span style={{ marginLeft: '0.5rem', fontSize: '0.8125rem', fontStyle: 'italic', opacity: 0.7 }}>Learn in public, Build in public</span>
+              热爱探索与分享。相信好的信息值得被整理和传播。这个站点用于记录我发现的优秀资源，希望对你也有帮助。
+            </p>
+            <p className="dark-footer-tagline" style={{ fontStyle: 'italic', opacity: 0.7 }}>
+              Learn in public, Build in public
             </p>
           </div>
         </div>
