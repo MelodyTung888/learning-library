@@ -1,13 +1,13 @@
 "use client";
 
 import DataEditor from "@/components/admin/DataEditor";
-import { skills, skillCategories, type Skill } from "@/data/skills";
+import { skills, skillsCategories, type Skill } from "@/data/skills";
 
 const fields = [
   { key: "rank", label: "排名", type: "text" as const, placeholder: "01" },
   { key: "title", label: "标题", type: "text" as const, placeholder: "技能名称" },
   { key: "desc", label: "描述", type: "text" as const, placeholder: "简短描述" },
-  { key: "category", label: "分类", type: "select" as const, options: skillCategories.filter(c => c !== "All") },
+  { key: "category", label: "分类", type: "select" as const, options: skillsCategories.filter(c => c !== "All") },
   { key: "link", label: "GitHub链接", type: "text" as const, placeholder: "https://github.com/username/repo" },
   { key: "author", label: "GitHub作者", type: "text" as const, placeholder: "username" },
   { key: "installPackage", label: "安装包链接", type: "text" as const, placeholder: "选填，点击可下载安装包" },
