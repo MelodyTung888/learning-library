@@ -12,26 +12,26 @@ export const skills: Skill[] = [
   {
     "rank": "01",
     "title": "Anthropic官方Skills",
-    "desc": "Claude Code母公司、最强模型之一，每一个skill都挺值得装",
-    "category": "高星推荐",
+    "desc": "Claude Code母公司，最强模型之一，每一个skill都挺值得装",
+    "category": "官方认证",
     "link": "https://github.com/anthropics/skills",
-    "author": "Anthropics"
+    "author": "anthropics"
   },
   {
     "rank": "02",
     "title": "Skill-Creator",
-    "desc": "技能之母，口喷帮你新建技能。3月刚迎来史诗级更新，必装~",
-    "category": "官方认证",
+    "desc": "技能之母，3月刚迎来史诗级更新，必装",
+    "category": "养虾必备",
     "link": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
-    "author": "Anthropic"
+    "author": "anthropics"
   },
   {
     "rank": "03",
     "title": "Skill-Vetter",
-    "desc": "保命Skill，每一只小龙虾第一个应该安装的技能，你的安全门卫&杀毒软件",
-    "category": "官方认证",
+    "desc": "保命skill，你的安全门卫&杀毒软件",
+    "category": "养虾必备",
     "link": "https://clawhub.ai/spclaudehome/skill-vetter",
-    "author": "Clawhub"
+    "author": "clawhub"
   },
   {
     "rank": "04",
@@ -39,7 +39,7 @@ export const skills: Skill[] = [
     "desc": "让AI可以自己操作网页，自动导航、点击、输入、截图，完成网页操作",
     "category": "高星推荐",
     "link": "https://github.com/vercel-labs/agent-browser",
-    "author": "Vercel-labs"
+    "author": "vercel-labs"
   },
   {
     "rank": "05",
@@ -51,59 +51,27 @@ export const skills: Skill[] = [
   },
   {
     "rank": "06",
-    "title": "TypeScript 技巧",
-    "desc": "高级类型技巧",
+    "title": "Superpowers",
+    "desc": "你的一站式AI编程助手，从头脑风暴、开发测试、到部署上线，一人公司做项目必备",
     "category": "高星推荐",
-    "link": "https://github.com/microsoft/TypeScript",
-    "author": "microsoft"
+    "link": "https://github.com/obra/superpowers",
+    "author": "obra"
   },
   {
     "rank": "07",
-    "title": "AI 写作提示词",
-    "desc": "各类 AI 写作场景模板",
-    "category": "高星推荐",
-    "link": "https://github.com/MelodyTung888/learning-library",
-    "author": "MelodyTung888"
+    "title": "Frontend-slides",
+    "desc": "根据你的主题、受众，帮你美化PPT，形成可以在线互动的PPT版本",
+    "category": "有点儿意思",
+    "link": "https://github.com/zarazhangrui/frontend-slides",
+    "author": "zarazhangrui"
   },
   {
     "rank": "08",
-    "title": "Git 协作流程",
-    "desc": "团队 Git 工作流",
-    "category": "官方认证",
-    "link": "https://github.com/git-guides",
-    "author": "github"
-  },
-  {
-    "rank": "09",
-    "title": "CLI 工具开发",
-    "desc": "Node.js/Go 构建命令行",
-    "category": "高星推荐",
-    "link": "https://github.com/tj/node-commander",
-    "author": "tj"
-  },
-  {
-    "rank": "10",
-    "title": "API 设计规范",
-    "desc": "RESTful API 最佳实践",
-    "category": "官方认证",
-    "link": "https://github.com/Microsoft/api-guidelines",
-    "author": "Microsoft"
-  },
-  {
-    "rank": "11",
-    "title": "Python 自动化脚本",
-    "desc": "日常办公自动化模板",
+    "title": "Codebase to Course",
+    "desc": "让AI把项目代码变成可交互的课程，用小白能理解的方式解释每个步骤",
     "category": "有点儿意思",
-    "link": "https://github.com/psf/requests",
-    "author": "psf"
-  },
-  {
-    "rank": "12",
-    "title": "数据可视化指南",
-    "desc": "图表设计最佳实践",
-    "category": "官方认证",
-    "link": "https://github.com/d3/d3",
-    "author": "d3"
+    "link": "https://github.com/zarazhangrui/codebase-to-course",
+    "author": "zarazhangrui"
   }
 ];
 

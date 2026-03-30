@@ -450,14 +450,17 @@ function Skills() {
               style={{ textDecoration: 'none', color: 'inherit' }}
               className="dark-skill-card-link"
             >
-              <div className="dark-skill-icon">
-                <img
-                  src={`https://github.com/${skill.author}.png`}
-                  alt={skill.author}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = `https://avatars.githubusercontent.com/u/0?s=60&v=4`;
-                  }}
-                />
+              <div className="dark-skill-header">
+                <div className="dark-skill-icon">
+                  <img
+                    src={`https://github.com/${skill.author}.png`}
+                    alt={skill.author}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = `https://avatars.githubusercontent.com/u/0?s=60&v=4`;
+                    }}
+                  />
+                </div>
+                <span className="dark-skill-category">{skill.category}</span>
               </div>
               <div className="dark-skill-content">
                 <h4 className="dark-skill-title">{skill.title}</h4>
