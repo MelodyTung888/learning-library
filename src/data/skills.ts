@@ -62,19 +62,30 @@ export const skills: Skill[] = [
   },
   {
     "rank": "07",
+    "title": "Gstack",
+    "desc": "YC CEO硅谷技能包，一个人+AI=一支开发团队。GitHub 48小时破万星，13个专业技能、50天50万行代码",
+    "category": "高星推荐",
+    "link": "https://github.com/garrytan/gstack",
+    "author": "garrytan",
+    "installPackage": "/installs/gstack.zip"
+  },
+  {
+    "rank": "08",
     "title": "Frontend-slides",
     "desc": "根据你的主题、受众，帮你美化PPT，形成可以在线互动的PPT版本",
     "category": "有点儿意思",
     "link": "https://github.com/zarazhangrui/frontend-slides",
-    "author": "Zarazhangrui"
+    "author": "Zarazhangrui",
+    "installPackage": "/installs/frontend-slides.zip"
   },
   {
-    "rank": "08",
+    "rank": "09",
     "title": "Codebase to Course",
     "desc": "让AI把项目代码变成可交互的课程，用小白能理解的方式解释每个步骤",
     "category": "有点儿意思",
     "link": "https://github.com/zarazhangrui/codebase-to-course",
-    "author": "Zarazhangrui"
+    "author": "Zarazhangrui",
+    "installPackage": "/installs/codebase-to-course.zip"
   }
 ];
 

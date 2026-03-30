@@ -376,7 +376,8 @@ function Skills() {
   const [activeCategory, setActiveCategory] = useState('All');
 
   const filteredSkills = activeCategory === 'All' ? skills : skills.filter((s: Skill) => s.category === activeCategory);
-  const displaySkills = showAll ? filteredSkills : filteredSkills.slice(0, 10);
+  const visibleSkills = filteredSkills.slice(0, 6);
+  const hiddenSkills = filteredSkills.slice(6);
 
   return (
     <section id="skills" className="dark-section dark-section-skills">
@@ -404,21 +405,23 @@ function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginTop: '0.25rem' }}
+              style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginTop: '0.25' }}
             >
               实用工具和最佳实践，复制即用。用好AI、而不是让AI来消耗你
             </motion.p>
           </div>
         </div>
-        <button onClick={() => setShowAll(!showAll)} className="dark-view-all-btn">
-          {showAll ? '收起' : '查看全部'}
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d={showAll ? "M5 15l7-7 7 7" : "M19 9l-7 7-7-7"} />
-          </svg>
-        </button>
+        {hiddenSkills.length > 0 && (
+          <button onClick={() => setShowAll(!showAll)} className="dark-view-all-btn">
+            {showAll ? '收起' : `查看全部 ${filteredSkills.length} 个`}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ transform: showAll ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s ease' }}>
+              <path d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        )}
       </div>
 
-      {showAll && (
+      {!showAll && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -438,10 +441,14 @@ function Skills() {
       )}
 
       <div className="dark-skills-grid">
-        {displaySkills.map((skill: Skill, i: number) => (
-          <div
+        {visibleSkills.map((skill: Skill, i: number) => (
+          <motion.div
             key={i}
             className="dark-skill-card"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.06, duration: 0.4 }}
           >
             <a
               href={skill.link}
@@ -490,9 +497,130 @@ function Skills() {
                 </span>
               )}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
+
+      {/* 下拉展开区域 */}
+      {!showAll && hiddenSkills.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="dark-skills-expand"
+        >
+          <button
+            onClick={() => setShowAll(true)}
+            className="dark-skills-expand-btn"
+          >
+            <div className="dark-skills-expand-content">
+              <span className="dark-skills-expand-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 5v14M5 12l7 7 7-7" />
+                </svg>
+              </span>
+              <div className="dark-skills-expand-text">
+                <span className="dark-skills-expand-label">还有 {hiddenSkills.length} 个技能</span>
+                <span className="dark-skills-expand-hint">点击展开</span>
+              </div>
+            </div>
+            <div className="dark-skills-expand-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </button>
+        </motion.div>
+      )}
+
+      {/* 展开后的内容 */}
+      {showAll && (
+        <>
+          {activeCategory === 'All' && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="dark-categories"
+              style={{ marginBottom: '1.5rem', marginTop: '1rem' }}
+            >
+              {skillsCategories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`dark-category-btn ${activeCategory === cat ? 'active' : ''}`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </motion.div>
+          )}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="dark-skills-grid"
+            style={{ marginTop: '1.5rem' }}
+          >
+            {hiddenSkills.map((skill: Skill, i: number) => (
+              <motion.div
+                key={i}
+                className="dark-skill-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06, duration: 0.4 }}
+              >
+                <a
+                  href={skill.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                  className="dark-skill-card-link"
+                >
+                  <div className="dark-skill-header">
+                    <div className="dark-skill-icon">
+                      <img
+                        src={`https://github.com/${skill.author}.png`}
+                        alt={skill.author}
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = `https://avatars.githubusercontent.com/u/0?s=60&v=4`;
+                        }}
+                      />
+                    </div>
+                    <span className="dark-skill-category">{skill.category}</span>
+                  </div>
+                  <div className="dark-skill-content">
+                    <h4 className="dark-skill-title">{skill.title}</h4>
+                    <p className="dark-skill-desc">{skill.desc}</p>
+                  </div>
+                </a>
+                <div className="dark-skill-actions">
+                  <a
+                    href={skill.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="dark-skill-btn dark-skill-btn-primary"
+                  >
+                    点击查看
+                  </a>
+                  {skill.installPackage ? (
+                    <a
+                      href={skill.installPackage}
+                      download
+                      className="dark-skill-btn dark-skill-btn-download"
+                    >
+                      直接下载
+                    </a>
+                  ) : (
+                    <span className="dark-skill-btn dark-skill-btn-disabled">
+                      直接下载
+                    </span>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </>
+      )}
     </section>
   );
 }

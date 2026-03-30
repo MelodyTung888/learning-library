@@ -1201,3 +1201,97 @@ body {
   .dark-skill-title { font-size: 1rem; }
   .dark-prompt-title { font-size: 1rem; }
 }
+
+/* === Skills Expand Button === */
+.dark-skills-expand {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.dark-skills-expand-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, rgba(196, 30, 58, 0.06) 0%, rgba(232, 168, 124, 0.08) 100%);
+  border: 1px dashed rgba(196, 30, 58, 0.3);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dark-skills-expand-btn:hover {
+  background: linear-gradient(135deg, rgba(196, 30, 58, 0.1) 0%, rgba(232, 168, 124, 0.12) 100%);
+  border-color: rgba(196, 30, 58, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(196, 30, 58, 0.12);
+}
+
+.dark-skills-expand-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dark-skills-expand-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-warm));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(196, 30, 58, 0.25);
+}
+
+.dark-skills-expand-icon svg {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.dark-skills-expand-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dark-skills-expand-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.dark-skills-expand-hint {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.125rem;
+}
+
+.dark-skills-expand-arrow {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-skills-expand-arrow svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-accent);
+  animation: bounce-down 2s ease-in-out infinite;
+}
+
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+.dark-skills-expand-btn:hover .dark-skills-expand-arrow svg {
+  animation: none;
+  transform: translateY(3px);
+}
