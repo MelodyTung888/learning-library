@@ -5,7 +5,7 @@ import { useState } from "react";
 import { videos, videoCategories, type Video } from "@/data/videos";
 import { podcasts, podcastCategories, type Podcast } from "@/data/podcasts";
 import { bloggers, bloggerCategories, type Blogger } from "@/data/bloggers";
-import { skills, skillCategories, type Skill } from "@/data/skills";
+import { skills, skillsCategories, type Skill } from "@/data/skills";
 import { prompts, promptsCategories, type Prompt } from "@/data/prompts";
 
 function Hero() {
@@ -425,7 +425,7 @@ function Skills() {
           className="dark-categories"
           style={{ marginBottom: '1.5rem' }}
         >
-          {skillCategories.map((cat) => (
+          {skillsCategories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
@@ -464,19 +464,6 @@ function Skills() {
               <h4 className="dark-skill-title">{skill.title}</h4>
               <p className="dark-skill-desc">{skill.desc}</p>
             </div>
-            {skill.installPackage && (
-              <a
-                href={skill.installPackage}
-                download
-                onClick={(e) => e.stopPropagation()}
-                className="dark-skill-download"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                </svg>
-                安装包
-              </a>
-            )}
           </motion.a>
         ))}
       </div>

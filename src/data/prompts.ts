@@ -40,4 +40,4 @@ export const prompts: Prompt[] = [
   }
 ];
 
-export const promptsCategories = ["All","技巧","原理","有点儿意思"];
+export const promptsCategories = ["All","深度学习","技巧","原理","有点儿意思"];
