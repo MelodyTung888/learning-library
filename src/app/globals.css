@@ -1122,13 +1122,13 @@ body {
   font-size: 0.875rem;
   line-height: 1.6;
   color: var(--color-text-secondary);
-  max-width: 380px;
+  max-width: 500px;
 }
 
 .dark-footer-socials {
   text-align: right;
-  max-width: 120px;
   flex-shrink: 0;
+  padding-left: 2rem;
 }
 
 @media (max-width: 768px) {
