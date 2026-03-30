@@ -321,24 +321,23 @@ function Bloggers() {
         )}
       </div>
 
-      {!showAll && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="dark-categories"
-          style={{ marginBottom: '1.5rem' }}
-        >
-          {bloggerCategories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`dark-category-btn ${activeCategory === cat ? 'active' : ''}`}
-            >
-              {cat}
-            </button>
-          ))}
-        </motion.div>
-      )}
+      {/* 分类标签 - 始终显示在 header 下方 */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="dark-categories"
+        style={{ marginBottom: '1.5rem', marginTop: showAll ? '0' : '1rem' }}
+      >
+        {bloggerCategories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            className={`dark-category-btn ${activeCategory === cat ? 'active' : ''}`}
+          >
+            {cat}
+          </button>
+        ))}
+      </motion.div>
 
       <div className="dark-bloggers-grid">
         {visibleBloggers.map((blogger: Blogger, i: number) => (
@@ -402,64 +401,44 @@ function Bloggers() {
         </motion.div>
       )}
 
-      {/* 展开后的内容 */}
+      {/* 展开后的隐藏内容 */}
       {showAll && (
-        <>
-          {activeCategory === 'All' && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="dark-categories"
-              style={{ marginBottom: '1.5rem', marginTop: '1rem' }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="dark-bloggers-grid"
+          style={{ marginTop: '1.5rem' }}
+        >
+          {hiddenBloggers.map((blogger: Blogger, i: number) => (
+            <motion.a
+              key={i}
+              href={blogger.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05, duration: 0.5 }}
+              className="dark-blogger-card"
             >
-              {bloggerCategories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`dark-category-btn ${activeCategory === cat ? 'active' : ''}`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </motion.div>
-          )}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="dark-bloggers-grid"
-            style={{ marginTop: '1.5rem' }}
-          >
-            {hiddenBloggers.map((blogger: Blogger, i: number) => (
-              <motion.a
-                key={i}
-                href={blogger.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05, duration: 0.5 }}
-                className="dark-blogger-card"
+              <div
+                className="dark-blogger-avatar"
+                style={{
+                  backgroundColor: blogger.color + '18',
+                  color: blogger.color,
+                  borderColor: blogger.color + '30'
+                }}
               >
-                <div
-                  className="dark-blogger-avatar"
-                  style={{
-                    backgroundColor: blogger.color + '18',
-                    color: blogger.color,
-                    borderColor: blogger.color + '30'
-                  }}
-                >
-                  {blogger.initials}
-                </div>
-                <div>
-                  <h4 className="dark-blogger-name">{blogger.name}</h4>
-                  <p className="dark-blogger-platform">{blogger.platform}</p>
-                </div>
-              </motion.a>
-            ))}
-          </motion.div>
-        </>
+                {blogger.initials}
+              </div>
+              <div>
+                <h4 className="dark-blogger-name">{blogger.name}</h4>
+                <p className="dark-blogger-platform">{blogger.platform}</p>
+              </div>
+            </motion.a>
+          ))}
+        </motion.div>
       )}
     </section>
   );
@@ -515,24 +494,23 @@ function Skills() {
         )}
       </div>
 
-      {!showAll && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="dark-categories"
-          style={{ marginBottom: '1.5rem' }}
-        >
-          {skillsCategories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`dark-category-btn ${activeCategory === cat ? 'active' : ''}`}
-            >
-              {cat}
-            </button>
-          ))}
-        </motion.div>
-      )}
+      {/* 分类标签 - 始终显示在 header 下方 */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="dark-categories"
+        style={{ marginBottom: '1.5rem', marginTop: showAll ? '0' : '1rem' }}
+      >
+        {skillsCategories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            className={`dark-category-btn ${activeCategory === cat ? 'active' : ''}`}
+          >
+            {cat}
+          </button>
+        ))}
+      </motion.div>
 
       <div className="dark-skills-grid">
         {visibleSkills.map((skill: Skill, i: number) => (
@@ -626,94 +604,74 @@ function Skills() {
         </motion.div>
       )}
 
-      {/* 展开后的内容 */}
+      {/* 展开后的隐藏内容 */}
       {showAll && (
-        <>
-          {activeCategory === 'All' && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="dark-skills-grid"
+          style={{ marginTop: '1.5rem' }}
+        >
+          {hiddenSkills.map((skill: Skill, i: number) => (
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="dark-categories"
-              style={{ marginBottom: '1.5rem', marginTop: '1rem' }}
+              key={i}
+              className="dark-skill-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.06, duration: 0.4 }}
             >
-              {skillsCategories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`dark-category-btn ${activeCategory === cat ? 'active' : ''}`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </motion.div>
-          )}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="dark-skills-grid"
-            style={{ marginTop: '1.5rem' }}
-          >
-            {hiddenSkills.map((skill: Skill, i: number) => (
-              <motion.div
-                key={i}
-                className="dark-skill-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06, duration: 0.4 }}
+              <a
+                href={skill.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none', color: 'inherit' }}
+                className="dark-skill-card-link"
               >
+                <div className="dark-skill-header">
+                  <div className="dark-skill-icon">
+                    <img
+                      src={`https://github.com/${skill.author}.png`}
+                      alt={skill.author}
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = `https://avatars.githubusercontent.com/u/0?s=60&v=4`;
+                      }}
+                    />
+                  </div>
+                  <span className="dark-skill-category">{skill.category}</span>
+                </div>
+                <div className="dark-skill-content">
+                  <h4 className="dark-skill-title">{skill.title}</h4>
+                  <p className="dark-skill-desc">{skill.desc}</p>
+                </div>
+              </a>
+              <div className="dark-skill-actions">
                 <a
                   href={skill.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ textDecoration: 'none', color: 'inherit' }}
-                  className="dark-skill-card-link"
+                  className="dark-skill-btn dark-skill-btn-primary"
                 >
-                  <div className="dark-skill-header">
-                    <div className="dark-skill-icon">
-                      <img
-                        src={`https://github.com/${skill.author}.png`}
-                        alt={skill.author}
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src = `https://avatars.githubusercontent.com/u/0?s=60&v=4`;
-                        }}
-                      />
-                    </div>
-                    <span className="dark-skill-category">{skill.category}</span>
-                  </div>
-                  <div className="dark-skill-content">
-                    <h4 className="dark-skill-title">{skill.title}</h4>
-                    <p className="dark-skill-desc">{skill.desc}</p>
-                  </div>
+                  点击查看
                 </a>
-                <div className="dark-skill-actions">
+                {skill.installPackage ? (
                   <a
-                    href={skill.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="dark-skill-btn dark-skill-btn-primary"
+                    href={skill.installPackage}
+                    download
+                    className="dark-skill-btn dark-skill-btn-download"
                   >
-                    点击查看
+                    直接下载
                   </a>
-                  {skill.installPackage ? (
-                    <a
-                      href={skill.installPackage}
-                      download
-                      className="dark-skill-btn dark-skill-btn-download"
-                    >
-                      直接下载
-                    </a>
-                  ) : (
-                    <span className="dark-skill-btn dark-skill-btn-disabled">
-                      直接下载
-                    </span>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </>
+                ) : (
+                  <span className="dark-skill-btn dark-skill-btn-disabled">
+                    直接下载
+                  </span>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       )}
     </section>
   );
