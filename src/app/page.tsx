@@ -561,16 +561,26 @@ function Prompts() {
       <div className="dark-prompts-grid">
         {displayPrompts.map((prompt: Prompt, i: number) => (
           <motion.div
-            key={i}
+            key={`prompt-${i}`}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.6 }}
             className="dark-prompt-card"
+            layout
           >
             <div className="dark-prompt-header">
               <h3 className="dark-prompt-title">{prompt.title}</h3>
-              {prompt.desc && <p className="dark-prompt-desc">{prompt.desc}</p>}
+              {prompt.desc && (
+                <motion.p
+                  className="dark-prompt-desc"
+                  initial={{ opacity: 0.7 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {prompt.desc}
+                </motion.p>
+              )}
             </div>
             <div className="dark-prompt-actions">
               <button
@@ -588,8 +598,11 @@ function Prompts() {
             </div>
             {expandedIndex === i && (
               <motion.div
+                key={`content-${i}`}
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="dark-prompt-content"
               >
                 {prompt.content}

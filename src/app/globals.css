@@ -912,9 +912,14 @@ body {
 }
 
 .dark-prompt-desc {
-  font-size: 0.8125rem;
-  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, var(--color-accent-warm) 0%, var(--color-accent-cream) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-top: 0.25rem;
+  line-height: 1.5;
 }
 
 .dark-prompt-tags {
