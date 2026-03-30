@@ -5,7 +5,6 @@ export interface Skill {
   category: string;
   link: string;
   author: string;
-  installPackage?: string;
 }
 
 export const skills: Skill[] = [
@@ -20,11 +19,10 @@ export const skills: Skill[] = [
   {
     "rank": "02",
     "title": "Skill-Creator",
-    "desc": "技能之母，3月刚迎来史诗级更新，必装",
+    "desc": "所有技能之母、直接口喷帮你生成新技能。3月刚迎来史诗级更新，必装技能",
     "category": "养虾必备",
     "link": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
-    "author": "anthropics",
-    "installPackage": "/installs/skill-creator.zip"
+    "author": "anthropics"
   },
   {
     "rank": "03",
@@ -32,8 +30,7 @@ export const skills: Skill[] = [
     "desc": "保命skill，你的安全门卫&杀毒软件",
     "category": "养虾必备",
     "link": "https://clawhub.ai/spclaudehome/skill-vetter",
-    "author": "clawhub",
-    "installPackage": "/installs/skill-vetter.zip"
+    "author": "clawhub"
   },
   {
     "rank": "04",
@@ -41,8 +38,7 @@ export const skills: Skill[] = [
     "desc": "让AI可以自己操作网页，自动导航、点击、输入、截图，完成网页操作",
     "category": "高星推荐",
     "link": "https://github.com/vercel-labs/agent-browser",
-    "author": "vercel-labs",
-    "installPackage": "/installs/agent-browser.zip"
+    "author": "vercel-labs"
   },
   {
     "rank": "05",
@@ -58,8 +54,7 @@ export const skills: Skill[] = [
     "desc": "你的一站式AI编程助手，从头脑风暴、开发测试、到部署上线，一人公司做项目必备",
     "category": "高星推荐",
     "link": "https://github.com/obra/superpowers",
-    "author": "obra",
-    "installPackage": "/installs/gstack.zip"
+    "author": "Obra"
   },
   {
     "rank": "07",
@@ -67,8 +62,7 @@ export const skills: Skill[] = [
     "desc": "根据你的主题、受众，帮你美化PPT，形成可以在线互动的PPT版本",
     "category": "有点儿意思",
     "link": "https://github.com/zarazhangrui/frontend-slides",
-    "author": "zarazhangrui",
-    "installPackage": "/installs/frontend-slides.zip"
+    "author": "Zarazhangrui"
   },
   {
     "rank": "08",
@@ -76,9 +70,8 @@ export const skills: Skill[] = [
     "desc": "让AI把项目代码变成可交互的课程，用小白能理解的方式解释每个步骤",
     "category": "有点儿意思",
     "link": "https://github.com/zarazhangrui/codebase-to-course",
-    "author": "zarazhangrui",
-    "installPackage": "/installs/codebase-to-course.zip"
+    "author": "Zarazhangrui"
   }
 ];
 
-export const skillsCategories = ["All","养虾必备","官方认证","高星推荐","有点儿意思"];
+export const skillsCategories = ["All","官方认证","养虾必备","高星推荐","有点儿意思"];
