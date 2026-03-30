@@ -471,7 +471,7 @@ function Skills() {
               viewport={{ once: true }}
               className="dark-section-title"
             >
-              个人 Top Skills
+              个人推荐 Top Skills
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
