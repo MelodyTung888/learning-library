@@ -547,26 +547,16 @@ function Prompts() {
 
       <div className="dark-prompts-grid">
         {displayPrompts.map((prompt: Prompt, i: number) => (
-          <motion.div
-            key={`prompt-${i}`}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1, duration: 0.6 }}
+          <div
+            key={i}
             className="dark-prompt-card"
-            layout
           >
             <div className="dark-prompt-header">
               <h3 className="dark-prompt-title">{prompt.title}</h3>
               {prompt.desc && (
-                <motion.p
-                  className="dark-prompt-desc"
-                  initial={{ opacity: 0.7 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.2 }}
-                >
+                <p className="dark-prompt-desc">
                   {prompt.desc}
-                </motion.p>
+                </p>
               )}
             </div>
             <div className="dark-prompt-actions">
@@ -583,19 +573,20 @@ function Prompts() {
                 {copiedIndex === i ? "已复制" : "复制"}
               </button>
             </div>
-            {expandedIndex === i && (
-              <motion.div
-                key={`content-${i}`}
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="dark-prompt-content"
-              >
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{
+                opacity: expandedIndex === i ? 1 : 0,
+                height: expandedIndex === i ? "auto" : 0
+              }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              style={{ overflow: "hidden" }}
+            >
+              <div className="dark-prompt-content">
                 {prompt.content}
-              </motion.div>
-            )}
-          </motion.div>
+              </div>
+            </motion.div>
+          </div>
         ))}
       </div>
     </section>

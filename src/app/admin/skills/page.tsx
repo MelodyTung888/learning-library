@@ -25,7 +25,7 @@ export default function SkillsAdminPage() {
         rank: "",
         title: "",
         desc: "",
-        category: "技巧",
+        category: "高星推荐",
         link: "https://github.com/",
         author: "",
         installPackage: ""
