@@ -276,7 +276,8 @@ function Bloggers() {
   const [activeCategory, setActiveCategory] = useState('All');
 
   const filteredBloggers = activeCategory === 'All' ? bloggers : bloggers.filter((b: Blogger) => b.category === activeCategory);
-  const displayBloggers = showAll ? filteredBloggers : filteredBloggers.slice(0, 8);
+  const visibleBloggers = filteredBloggers.slice(0, 8);
+  const hiddenBloggers = filteredBloggers.slice(8);
 
   return (
     <section id="bloggers" className="dark-section">
@@ -306,19 +307,21 @@ function Bloggers() {
               transition={{ delay: 0.1 }}
               style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginTop: '0.25rem' }}
             >
-              Follow builders, not influences.（需要VPN）
+              关注创造者、别追流量博主
             </motion.p>
           </div>
         </div>
-        <button onClick={() => setShowAll(!showAll)} className="dark-view-all-btn">
-          {showAll ? '收起' : '查看全部'}
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d={showAll ? "M5 15l7-7 7 7" : "M19 9l-7 7-7-7"} />
-          </svg>
-        </button>
+        {hiddenBloggers.length > 0 && (
+          <button onClick={() => setShowAll(!showAll)} className="dark-view-all-btn">
+            {showAll ? '收起' : `查看全部 ${filteredBloggers.length} 位`}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ transform: showAll ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s ease' }}>
+              <path d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        )}
       </div>
 
-      {showAll && (
+      {!showAll && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -338,7 +341,7 @@ function Bloggers() {
       )}
 
       <div className="dark-bloggers-grid">
-        {displayBloggers.map((blogger: Blogger, i: number) => (
+        {visibleBloggers.map((blogger: Blogger, i: number) => (
           <motion.a
             key={i}
             href={blogger.url}
@@ -367,6 +370,97 @@ function Bloggers() {
           </motion.a>
         ))}
       </div>
+
+      {/* 下拉展开区域 */}
+      {!showAll && hiddenBloggers.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="dark-skills-expand"
+        >
+          <button
+            onClick={() => setShowAll(true)}
+            className="dark-skills-expand-btn"
+          >
+            <div className="dark-skills-expand-content">
+              <span className="dark-skills-expand-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 5v14M5 12l7 7 7-7" />
+                </svg>
+              </span>
+              <div className="dark-skills-expand-text">
+                <span className="dark-skills-expand-label">还有 {hiddenBloggers.length} 位博主</span>
+                <span className="dark-skills-expand-hint">点击展开</span>
+              </div>
+            </div>
+            <div className="dark-skills-expand-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </button>
+        </motion.div>
+      )}
+
+      {/* 展开后的内容 */}
+      {showAll && (
+        <>
+          {activeCategory === 'All' && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="dark-categories"
+              style={{ marginBottom: '1.5rem', marginTop: '1rem' }}
+            >
+              {bloggerCategories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`dark-category-btn ${activeCategory === cat ? 'active' : ''}`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </motion.div>
+          )}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="dark-bloggers-grid"
+            style={{ marginTop: '1.5rem' }}
+          >
+            {hiddenBloggers.map((blogger: Blogger, i: number) => (
+              <motion.a
+                key={i}
+                href={blogger.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05, duration: 0.5 }}
+                className="dark-blogger-card"
+              >
+                <div
+                  className="dark-blogger-avatar"
+                  style={{
+                    backgroundColor: blogger.color + '18',
+                    color: blogger.color,
+                    borderColor: blogger.color + '30'
+                  }}
+                >
+                  {blogger.initials}
+                </div>
+                <div>
+                  <h4 className="dark-blogger-name">{blogger.name}</h4>
+                  <p className="dark-blogger-platform">{blogger.platform}</p>
+                </div>
+              </motion.a>
+            ))}
+          </motion.div>
+        </>
+      )}
     </section>
   );
 }
