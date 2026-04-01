@@ -37,12 +37,12 @@ export const skills: Skill[] = [
   },
   {
     "rank": "04",
-    "title": "Agent-browser",
-    "desc": "让AI可以自己操作网页，自动导航、点击、输入、截图，完成网页操作",
+    "title": "Web Access",
+    "desc": "一个 Skill，拉满 Agent 联网和浏览器能力",
     "category": "高星推荐",
-    "link": "https://github.com/vercel-labs/agent-browser",
-    "author": "vercel-labs",
-    "installPackage": "/installs/agent-browser.zip"
+    "link": "https://github.com/eze-is/web-access",
+    "author": "eze-is",
+    "installPackage": "桌面-skillskill安装包-web-access-main"
   },
   {
     "rank": "05",
@@ -86,15 +86,6 @@ export const skills: Skill[] = [
     "link": "https://github.com/zarazhangrui/codebase-to-course",
     "author": "Zarazhangrui",
     "installPackage": "/installs/codebase-to-course.zip"
-  },
-  {
-    "rank": "10",
-    "title": "Web Access",
-    "desc": "一个 Skill，拉满 Agent 联网和浏览器能力",
-    "category": "高星推荐",
-    "link": "https://github.com/eze-is/web-access",
-    "author": "eze-is",
-    "installPackage": "桌面-skillskill安装包-web-access-main"
   }
 ];
 
