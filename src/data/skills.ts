@@ -86,6 +86,15 @@ export const skills: Skill[] = [
     "link": "https://github.com/zarazhangrui/codebase-to-course",
     "author": "Zarazhangrui",
     "installPackage": "/installs/codebase-to-course.zip"
+  },
+  {
+    "rank": "10",
+    "title": "Web Access",
+    "desc": "一个 Skill，拉满 Agent 联网和浏览器能力",
+    "category": "高星推荐",
+    "link": "https://github.com/eze-is/web-access",
+    "author": "eze-is",
+    "installPackage": "桌面-skillskill安装包-web-access-main"
   }
 ];
 
