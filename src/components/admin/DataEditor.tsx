@@ -38,6 +38,8 @@ export default function DataEditor({
   const handleSaveItem = (index: number) => {
     const updated = [...data];
     updated[index] = { ...data[index], ...(index === -1 ? newItem : data[index]) };
+    // Sort by rank after saving
+    updated.sort((a, b) => String(a.rank || "").localeCompare(String(b.rank || ""), undefined, { numeric: true }));
     setData(updated);
     setEditingIndex(null);
     setIsAdding(false);
@@ -47,6 +49,7 @@ export default function DataEditor({
   const handleDelete = (index: number) => {
     if (confirm("确定要删除这条记录吗？")) {
       const updated = data.filter((_, i) => i !== index);
+      updated.sort((a, b) => String(a.rank || "").localeCompare(String(b.rank || ""), undefined, { numeric: true }));
       setData(updated);
     }
   };
@@ -432,6 +435,50 @@ export default function DataEditor({
                   </p>
                 </div>
                 <div style={{ display: "flex", gap: "0.5rem" }}>
+                  <button
+                    onClick={() => {
+                      const updated = [...data];
+                      const item = updated[index];
+                      updated.splice(index, 1);
+                      updated.splice(index - 1, 0, item);
+                      updated.sort((a, b) => String(a.rank || "").localeCompare(String(b.rank || ""), undefined, { numeric: true }));
+                      setData(updated);
+                    }}
+                    disabled={index === 0}
+                    style={{
+                      padding: "0.5rem",
+                      background: "transparent",
+                      border: "1px solid var(--border)",
+                      borderRadius: "6px",
+                      fontSize: "0.75rem",
+                      color: index === 0 ? "#ccc" : "var(--color-text-primary)",
+                      cursor: index === 0 ? "not-allowed" : "pointer"
+                    }}
+                  >
+                    ↑
+                  </button>
+                  <button
+                    onClick={() => {
+                      const updated = [...data];
+                      const item = updated[index];
+                      updated.splice(index, 1);
+                      updated.splice(index + 1, 0, item);
+                      updated.sort((a, b) => String(a.rank || "").localeCompare(String(b.rank || ""), undefined, { numeric: true }));
+                      setData(updated);
+                    }}
+                    disabled={index === data.length - 1}
+                    style={{
+                      padding: "0.5rem",
+                      background: "transparent",
+                      border: "1px solid var(--border)",
+                      borderRadius: "6px",
+                      fontSize: "0.75rem",
+                      color: index === data.length - 1 ? "#ccc" : "var(--color-text-primary)",
+                      cursor: index === data.length - 1 ? "not-allowed" : "pointer"
+                    }}
+                  >
+                    ↓
+                  </button>
                   <button
                     onClick={() => setEditingIndex(index)}
                     style={{
