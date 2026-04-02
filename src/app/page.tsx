@@ -8,6 +8,20 @@ import { bloggers, bloggerCategories, type Blogger } from "@/data/bloggers";
 import { skills, skillsCategories, type Skill } from "@/data/skills";
 import { prompts, promptsCategories, type Prompt } from "@/data/prompts";
 
+function getDownloadUrl(url: string): string {
+  if (!url) return "";
+  // 已经是完整下载链接或本地路径，直接返回
+  if (url.startsWith("/") || url.includes("/releases/download/")) {
+    return url;
+  }
+  // GitHub repo 地址 → 转换为 archive zip 下载链接
+  const match = url.match(/github\.com\/([^\/]+)\/([^\/]+)/);
+  if (match) {
+    return `https://github.com/${match[1]}/${match[2]}/archive/refs/heads/main.zip`;
+  }
+  return url;
+}
+
 function Hero() {
   return (
     <section className="dark-hero">
@@ -557,7 +571,7 @@ function Skills() {
               </a>
               {skill.installPackage ? (
                 <a
-                  href={skill.installPackage}
+                  href={getDownloadUrl(skill.installPackage)}
                   download
                   className="dark-skill-btn dark-skill-btn-download"
                 >
@@ -657,7 +671,7 @@ function Skills() {
                 </a>
                 {skill.installPackage ? (
                   <a
-                    href={skill.installPackage}
+                    href={getDownloadUrl(skill.installPackage)}
                     download
                     className="dark-skill-btn dark-skill-btn-download"
                   >

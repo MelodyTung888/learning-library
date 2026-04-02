@@ -32,7 +32,20 @@ export async function commitToGitHub(
     };
   }
 
-  const [owner, repoName] = repo.split("/");
+  // 兼容完整 URL (https://github.com/owner/repo) 和短格式 (owner/repo)
+  let owner = "";
+  let repoName = "";
+  if (repo.includes("github.com")) {
+    const match = repo.match(/github\.com\/([^\/]+)\/([^\/]+)/);
+    if (match) {
+      owner = match[1];
+      repoName = match[2].replace(/\.git$/, "");
+    }
+  } else {
+    const parts = repo.split("/");
+    owner = parts[0] || "";
+    repoName = parts[1] || "";
+  }
   if (!owner || !repoName) {
     return {
       success: false,
