@@ -1,0 +1,71 @@
+local_backend: true
+
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "skills"
+    label: "Skills"
+    folder: "src/data"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Rank", name: "rank", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "desc", widget: "text" }
+      - { label: "Category", name: "category", widget: "select", options: ["官方认证", "养虾必备", "高星推荐", "有点儿意思"] }
+      - { label: "Link", name: "link", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Install Package", name: "installPackage", widget: "string", required: false }
+
+  - name: "prompts"
+    label: "Prompts"
+    folder: "src/data"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "desc", widget: "text" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Content", name: "content", widget: "text" }
+      - { label: "Category", name: "category", widget: "select", options: ["技巧", "原理", "有点儿意思", "深度进阶"] }
+
+  - name: "bloggers"
+    label: "Bloggers"
+    folder: "src/data"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Description", name: "desc", widget: "text" }
+      - { label: "Category", name: "category", widget: "select", options: ["技术", "产品", "投资", "有点儿意思"] }
+      - { label: "Link", name: "link", widget: "string" }
+      - { label: "Owner", name: "owner", widget: "string" }
+
+  - name: "videos"
+    label: "Videos"
+    folder: "src/data"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "desc", widget: "text" }
+      - { label: "Category", name: "category", widget: "select", options: ["课程", "访谈", "演讲", "有点儿意思"] }
+      - { label: "Link", name: "link", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+
+  - name: "podcasts"
+    label: "Podcasts"
+    folder: "src/data"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Description", name: "desc", widget: "text" }
+      - { label: "Category", name: "category", widget: "select", options: ["访谈", "观点", "故事", "有点儿意思"] }
+      - { label: "Link", name: "link", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
