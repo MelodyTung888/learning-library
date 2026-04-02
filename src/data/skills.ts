@@ -93,7 +93,8 @@ export const skills: Skill[] = [
     "desc": "AI 每日新闻简报生成器。从多个来源聚合、筛选、分类 AI 行业资讯，输出可直接阅读的结构化报告",
     "category": "有点儿意思",
     "link": "https://github.com/MelodyTung888/ai-daily-news-v2",
-    "author": "MelodyTung888"
+    "author": "MelodyTung888",
+    "installPackage": "/installs/AI资讯官-SKILL.zip"
   }
 ];
 
