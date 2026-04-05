@@ -95,6 +95,24 @@ export const skills: Skill[] = [
     "link": "https://github.com/MelodyTung888/ai-daily-news-v2",
     "author": "MelodyTung888",
     "installPackage": "/installs/AI资讯官-SKILL.zip"
+  },
+  {
+    "rank": "12",
+    "title": "PUA",
+    "desc": "用中西大厂 PUA 话术驱动 AI 穷尽所有方案才允许放弃，让你的 Codex / Claude Code 工作效率翻倍，产出翻倍",
+    "category": "高星推荐",
+    "link": "https://github.com/tanweai/pua",
+    "author": "tanweai",
+    "installPackage": "/installs/pua.zip"
+  },
+  {
+    "rank": "13",
+    "title": "AI自动复利系统",
+    "desc": "跨Session记忆沉淀与知识复利",
+    "category": "高星推荐",
+    "link": "https://github.com/MelodyTung888/compound-memory-system",
+    "author": "MelodyTung888",
+    "installPackage": "桌面-compound-memory-system-main"
   }
 ];
 

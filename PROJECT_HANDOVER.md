@@ -1,13 +1,14 @@
 # Melody's Learning Library - 项目交接文档
 
-> 最后更新：2026-03-30 部署验证
+> 最后更新：2026-04-04 迁移至 Vercel
 
 ---
 
 ## 一、项目概述
 
 **网站名称**：Melody's Learning Library
-**在线地址**：https://learning-library-gamma.vercel.app
+**在线地址**：https://melodyai-top.vercel.app（主）
+**备用地址**：https://learning-library-gamma.vercel.app
 **GitHub 仓库**：https://github.com/MelodyTung888/learning-library
 
 **定位**：个人 AI 学习资源导航站，收录 Prompts、Skills、Bloggers、Videos、Podcasts 等五大板块资源。
@@ -98,7 +99,7 @@ interface Skill {
 
 ## 五、管理后台使用
 
-**访问地址**：https://learning-library-gamma.vercel.app/admin
+**访问地址**：https://melodyai-top.vercel.app/admin
 
 ### 首次配置
 1. 进入 Admin 页面的「设置」
@@ -172,12 +173,26 @@ npm run build
 2. 检查仓库地址格式是否正确
 3. 检查 Token 是否有 repo 写入权限
 
+### Q: 域名 melodyai.top 无法访问？
+- melodyai.top 原指向 Netlify（已因额度用尽停机）
+- 当前已迁移至 Vercel：https://melodyai-top.vercel.app
+- 如需恢复 melodyai.top：去域名 DNS 设置，将 CNAME 记录从 Netlify 改为 `cname.vercel-dns.com`
+
 ---
 
-## 九、联系方式
+## 九、部署历史
+
+| 日期 | 平台 | 地址 | 备注 |
+|------|------|------|------|
+| 2026-03-29 | Vercel | learning-library-gamma.vercel.app | 初始部署 |
+| 2026-04-04 | Vercel | melodyai-top.vercel.app | 新建项目，同步 GitHub |
+
+---
+
+## 十、联系方式
 
 - GitHub: MelodyTung888
-- 网站: https://learning-library-gamma.vercel.app
+- 网站: https://melodyai-top.vercel.app
 
 ---
 
